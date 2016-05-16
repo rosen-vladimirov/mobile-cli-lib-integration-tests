@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/rosen-vladimirov/mobile-cli-lib-integration-tests#readme",
   "dependencies": {
+    "electron-prebuilt": "0.35.5",
     "lodash": "4.12.0"
   }
 }
