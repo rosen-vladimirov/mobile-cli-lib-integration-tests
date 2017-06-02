@@ -17,6 +17,7 @@ script:
     - node -e 'console.log(tty.getWindowSize && tty.getWindowSize())'
     - export CLI_WIDTH=30
     - echo $CLI_WIDTH
+    - node a.js
     - pwd
     - tns -h
     - tns create app1
