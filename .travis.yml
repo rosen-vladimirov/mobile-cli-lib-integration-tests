@@ -8,7 +8,7 @@ cache:
 install:
     - nvm install 6
     - npm install --save ./cli-width-1.1.1.tgz
-    - npm install -g nativescript
+    - npm install -g nativescript --ignore-scripts
 
 before_script:
     - export DISPLAY=:99.0; sh -e /etc/init.d/xvfb start
