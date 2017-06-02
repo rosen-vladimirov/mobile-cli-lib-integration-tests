@@ -1,37 +1,29 @@
 language: android
 
-android:
-  components:
-    - platform-tools
-    - build-tools-23.0.1
-    - android-23
-    - extra-android-m2repository
-    - sys-img-armeabi-v7a-android-19
-
 cache:
     directories:
         - .nvm
         - node_modules
 
 install:
-    - nvm install 4
-    - npm install
-    - cd node_modules
-    - rm -rf mobile-cli-lib
-    - git clone https://github.com/telerik/mobile-cli-lib.git
-    - cd mobile-cli-lib
-    - npm install
-    - npm install -g grunt-cli
-    - grunt
-    - cd ../..
+    - nvm install 6
+    - npm install --save ./cli-width-1.1.1.tgz
+    - npm install -g nativescript --ignore-scripts
 
 before_script:
     - export DISPLAY=:99.0; sh -e /etc/init.d/xvfb start
-    - echo no | android create avd --force -n test -t android-19 -b armeabi-v7a
-    - emulator -avd test -no-audio -no-window &
-    - android-wait-for-emulator
 
 script:
+    - npm ls cli-width
+    - ls -l ./node_modules/inquirer/node_modules
+    - ls -l node_modules | grep -i cli-width
+    - node -e 'console.log(tty.getWindowSize)'
+    - node -e 'console.log(tty.getWindowSize && tty.getWindowSize())'
+    - export CLI_WIDTH=30
+    - echo $CLI_WIDTH
+    - node a.js
     - pwd
-    - ls -al node_modules/.bin
-    - ./node_modules/.bin/electron .
+    - tns -h
+    - tns create app1
+    - cd app1
+    - ls -l
