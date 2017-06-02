@@ -7,12 +7,16 @@ cache:
 
 install:
     - nvm install 6
+    - npm install --save ./inquirer-0.9.0.tgz
     - npm install -g nativescript
 
 before_script:
     - export DISPLAY=:99.0; sh -e /etc/init.d/xvfb start
 
 script:
+    - npm ls inquirer
+    - ls -l node_modules/nativescript/node_modules
+    - ls -l node_modules | grep -i inquirer
     - node -e 'console.log(tty.getWindowSize)'
     - node -e 'console.log(tty.getWindowSize && tty.getWindowSize())'
     - export CLI_WIDTH=30
