@@ -13,6 +13,10 @@ before_script:
     - export DISPLAY=:99.0; sh -e /etc/init.d/xvfb start
 
 script:
+    - node -e 'console.log(tty.getWindowSize)'
+    - node -e 'console.log(tty.getWindowSize && tty.getWindowSize())'
+    - export CLI_WIDTH=30
+    - echo $CLI_WIDTH
     - pwd
     - tns -h
     - tns create app1
