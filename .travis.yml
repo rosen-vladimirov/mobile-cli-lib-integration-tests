@@ -1,37 +1,20 @@
 language: android
 
-android:
-  components:
-    - platform-tools
-    - build-tools-23.0.1
-    - android-23
-    - extra-android-m2repository
-    - sys-img-armeabi-v7a-android-19
-
 cache:
     directories:
         - .nvm
         - node_modules
 
 install:
-    - nvm install 4
-    - npm install
-    - cd node_modules
-    - rm -rf mobile-cli-lib
-    - git clone https://github.com/telerik/mobile-cli-lib.git
-    - cd mobile-cli-lib
-    - npm install
-    - npm install -g grunt-cli
-    - grunt
-    - cd ../..
+    - nvm install 6
+    - npm install -g nativescript
 
 before_script:
     - export DISPLAY=:99.0; sh -e /etc/init.d/xvfb start
-    - echo no | android create avd --force -n test -t android-19 -b armeabi-v7a
-    - emulator -avd test -no-audio -no-window &
-    - android-wait-for-emulator
 
 script:
     - pwd
-    - ls -al node_modules/.bin
-    - ./node_modules/.bin/electron .
+    - tns -h
+    - tns create app1
+    - cd app1
+    - ls -l
